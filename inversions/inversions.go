@@ -24,29 +24,24 @@ func CountInversions(arr []uint) int64 {
 	c := int64(0)
 	i := 0
 	j := 0
-	ind := 0
 	for i < mid && j < (n-mid) {
 		if left[i] <= right[j] {
-			arr[ind] = left[i]
-			ind++
+			arr[i+j] = left[i]
 			i++
 		} else {
-			arr[ind] = right[j]
+			arr[i+j] = right[j]
 			j++
-			ind++
 			c += int64(mid - i)
 		}
 	}
 
 	for i < mid {
-		arr[ind] = left[i]
-		ind++
+		arr[i+j] = left[i]
 		i++
 	}
 
 	for j < n-mid {
-		arr[ind] = right[j]
-		ind++
+		arr[i+j] = right[j]
 		j++
 	}
 	return a + b + c
